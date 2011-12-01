@@ -7,12 +7,16 @@
 \documentclass{article}
 \usepackage{cite}
 \usepackage{listings}
+\usepackage{color}
+
 \author{Joseph Randall Hunt\\
 Bobby Wertman\\
 Western Carolina University,\\
 Cullowhee, North Carolina\\
 }
 \date{\today}
+
+\begin{document}
 \maketitle
 \section{Project Proposal}
    \subsection{Goals}
@@ -20,8 +24,26 @@ Cullowhee, North Carolina\\
 \section{Sorts}
    \subsection{Merge Sort}
       \subsubsection{Algorithm}
+        Merge sort is a comparison-based sorting algorithm, based on the
+        divide-and-conquer design.  Its average and worst cases are both $n
+        log(n)$, and its best case is $\Omega(n)$.  Invented in 1945 by John
+        von Neumann, it exploits the fact that combining two lists of sorted
+        data is a linear-time process.  
       \subsubsection{Efficiency}
+        The actual code for the algorithm is available in \textbf{Listing
+        \ref{code:mergesort}}.  This particular implementation uses an
+        optimization that switches to insertion sort on small arrays.  This
+        speeds up the algorithm because it allows the small data set to fit
+        entirely in cache along with the small amount of code associated with
+        the insertion sort algorithm.  See \textbf{Listing
+        \ref{code:mergesort-parallel}} for a parallel implementation of merge
+        sort.
       \subsubsection{Applications}
+        Merge sort is useful in applications where the data set will not fit
+        entirely into memory.  This allows for the data to be read in from disk
+        and sorted as it is read, thus requiring a very small memory footprint.
+        In addition, when time complexity needs to be guaranteed, merge sort is
+        preferable over quicksort, as quicksort's worst case is $O(n^2)$.
    \subsection{Quick Sort}
       \subsubsection{Algorithm}
       \subsubsection{Efficiency}
@@ -30,8 +52,25 @@ Cullowhee, North Carolina\\
       \subsubsection{Algorithm}
       \subsubsection{Efficiency}
       \subsubsection{Applications}
-   \subesction{Comparing and Contrasting}
+   \subsection{Comparing and Contrasting}
 \section{Conclusions}
+
+\appendix
+\section{Code Examples}
+\lstset{
+    language=Go,
+    basicstyle=\footnotesize\fdmfamily,
+    keywordstyle=\bfseries\fdmfamily\color[rgb]{0.8,0.6,0.1},
+    commentstyle=\scriptsize\color[rgb]{0.133,0.133,0.545},
+    stringstyle=\ttfamily\color[rgb]{0.627,0.126,0.941},
+    numbers=left,
+    frame=single,
+    stepnumber=1,
+    identifierstyle=\ttfamily,
+    tabsize=2
+}
+\lstinputlisting[caption={Go implementation of MergeSort},label=code:mergesort]{src/merge.go}
+\lstinputlisting[caption={Parallel implementation of MergeSort in Go},label=code:mergesort-parallel]{src/parallel.go}
 \bibliography{mybib}{}
 \bibliographystyle{plain}
 \end{document}
