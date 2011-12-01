@@ -9,6 +9,7 @@
 \usepackage{listings}
 \usepackage{color}
 
+\title{Sorting Algorithms}
 \author{Joseph Randall Hunt\\
 Bobby Wertman\\
 Western Carolina University,\\
@@ -28,7 +29,7 @@ Cullowhee, North Carolina\\
         divide-and-conquer design.  Its average and worst cases are both $n
         log(n)$, and its best case is $\Omega(n)$.  Invented in 1945 by John
         von Neumann, it exploits the fact that combining two lists of sorted
-        data is a linear-time process.  
+        data is a linear-time process.  \cite{introalg}
       \subsubsection{Efficiency}
         The actual code for the algorithm is available in \textbf{Listing
         \ref{code:mergesort}}.  This particular implementation uses an
@@ -72,6 +73,6 @@ Cullowhee, North Carolina\\
 \lstinputlisting[caption={Go implementation of MergeSort},label=code:mergesort]{src/merge.go}
 \lstinputlisting[caption={Parallel implementation of MergeSort in Go},label=code:mergesort-parallel]{src/parallel.go}
 
-\bibliography{mybib}{}
+\bibliography{sources}
 \bibliographystyle{plain}
 \end{document}
