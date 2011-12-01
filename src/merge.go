@@ -5,7 +5,7 @@ var optimize int = 10
 func Merge(arr []int) {
 	if len(arr) < optimize && len(arr) != 1 {
 		InsertionSort(arr)
-	} else if len(arr) > 2 {
+	} else if len(arr) > 1 {
 		// Start at the midpoint
 		size := len(arr) / 2
 
@@ -50,10 +50,6 @@ func Merge(arr []int) {
 		// Copy result to our answer
 		for i := 0; i < len(arr); i++ {
 			arr[i] = data[i]
-		}
-	} else if len(arr) == 2 {
-		if arr[0] > arr[1] {
-			arr[0], arr[1] = arr[1], arr[0]
 		}
 	}
 }
