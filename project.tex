@@ -50,9 +50,51 @@ Cullowhee, North Carolina\\
       \subsubsection{Efficiency}
       \subsubsection{Applications}
    \subsection{Shell Sort}
-      \subsubsection{Algorithm}
-      \subsubsection{Efficiency}
-      \subsubsection{Applications}
+   \subsubsection{Algorithm}
+        The Shell Sort was developed by Donald Shell in 1959. Formally caled
+        Shell's Sort, the algorithm was the first sorting method to break the 
+        quadratic time, however this was not proven unitil years later. The 
+        Shell Sort is made faster my comparing elements at a distance rather 
+        than onl comparing elements side by side. This sorting method has
+        several pros and cons\cite{introalg}. Mainly, Shell Sort is the
+        fastest $N^2$ based sort,however, its computational complexity can be
+        difficult to calculate\cite{princton}. Shell Sort is reasonably easy to
+        implement and also easy to comprehend. 
+        Donald Shell's sorting algorithm can be relativly easy to visualize.
+        \begin{enumerate}
+            \item Take the first element, $h_0$.
+            \item Compare it to the $h_{k_{th}}$ element. For example, if the 
+            gap is 5, compare to the $5^{th}$ element. 
+            \item If the $h_{k_{th}}$ is smaller, switch the elements.
+            \item Advance the first element by the gap and compare to the next 
+            element one gap ahead.
+            \item Repeat the above, and, if the element one gap BELOW the first
+            element is more, switch the elements and repeat.
+        \end{enumerate}
+    \subsubsection{Efficiency}
+        The Shell Sort can sort an array of elements faster than the insertion
+        sort by comparing elements across a gap as opposed to only comparing
+        adjacent elements. This gap is reduced and the set is compared
+        repeatedly until the gap equals 1. At this point the set can be sorted
+        with a simple, and fast, insertion sort. It is because of this that the
+        Shell Sort is known as the \textquotedblleft diminishing increment sort
+        \textquotedblright \cite{education}. This gap is also the reason that
+        the computational complexity is difficult to find, it varies based on
+        the gap. Several mathmeticians have attempted to find the best
+        \textquotedblleft gap sequence \textquotedblright. With the discovery
+        of the algorithm, Donald Shell used to floor function of $gap / 2$.
+        This is also the gap sequence used in the implementation for this
+        project. The worst case complexity for this gap sequence is
+        $\Theta (N/2^k)$. Vaughan Pratt, who developed \textquotedblleft
+        Pratt's theorem \textquotedblright for tree spanning developed his own
+        gap sequence beginning with $h= \{ 1, 3, 7, 15, 31, 63, 127, 255, 511
+        \}$. Pratt's gap sequence has a running time of $\Theta (N^{3/2})$.
+        Several others have their own gap sequence and experts in the
+        mathematical field continue to look for the fastest gap
+        sequence\cite{princton}.\\
+    \subsubsection{Applications}
+        
+        
    \subsection{Comparing and Contrasting}
 \section{Conclusions}
 
