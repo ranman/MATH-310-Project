@@ -52,15 +52,16 @@ Cullowhee, North Carolina\\
           $\frac{3n log(n)}{2}$ for the sort, giving us the complexity of
           $\Omega(n log(n))$.
         \paragraph{Average Case}
+          
         \paragraph{Code}
-        The actual code for the algorithm is available in \textbf{Listing
-        \ref{code:mergesort}}.  This particular implementation uses an
-        optimization that switches to insertion sort on small arrays.  This
-        speeds up the algorithm because it allows the small data set to fit
-        entirely in cache along with the small amount of code associated with
-        the insertion sort algorithm.  See \textbf{Listing
-        \ref{code:mergesort-parallel}} for a parallel implementation of merge
-        sort.
+          The actual code for the algorithm is available in \textbf{Listing
+          \ref{code:mergesort}}.  This particular implementation uses an
+          optimization that switches to insertion sort on small arrays.  This
+          speeds up the algorithm because it allows the small data set to fit
+          entirely in cache along with the small amount of code associated with
+          the insertion sort algorithm.  See \textbf{Listing
+          \ref{code:mergesort-parallel}} for a parallel implementation of merge
+          sort.
       \subsubsection{Applications}
         Merge sort is useful in applications where the data set will not fit
         entirely into memory.  This allows for the data to be read in from disk
