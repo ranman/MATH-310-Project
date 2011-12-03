@@ -2,15 +2,17 @@
 % MATH 310 -- Risto Atanasov
 % Western Carolina University
 %
-% Joseph Hunt, Bobby Wertman, 
+% Joseph Hunt, Bobby Wertman, Tyler McKinney, 
 %
 \documentclass{article}
 \usepackage{cite}
 \usepackage{listings}
 \usepackage{color}
-
+\usepackage{appendix}
+\usepackage[letterpaper]{geometry}
 \title{Sorting Algorithms}
 \author{Joseph Randall Hunt\\
+Tyler McKinney\\
 Bobby Wertman\\
 Marco Anton\\
 Western Carolina University,\\
@@ -207,7 +209,7 @@ $|6|$ & $|9|$\\ \hline
    \subsection{Comparing and Contrasting}
 \section{Conclusions}
 
-\appendix
+\begin{appendices}
 \section{Code Examples}
 \lstset{
     language=Go,
@@ -223,6 +225,7 @@ $|6|$ & $|9|$\\ \hline
 }
 \lstinputlisting[caption={Go implementation of MergeSort},label=code:mergesort]{src/merge.go}
 \lstinputlisting[caption={Parallel implementation of MergeSort in Go},label=code:mergesort-parallel]{src/parallel.go}
+\end{appendices}
 
 \bibliography{sources}
 \bibliographystyle{plain}
