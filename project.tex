@@ -32,8 +32,14 @@ Cullowhee, North Carolina\\
         data is a linear-time process.  \cite{introalg}
       \subsubsection{Efficiency}
         Merge sort's complexity is $n log(n)$ for all cases, but the number of
-        computations performed changes between best and worst cases.
+        computations performed changes between best and worst cases.  In the
+        all cases, Merge Sort performs $log(n)$ splits of $n$ elements, putting
+        the efficiency of this phase at $n log(n)$.  However, when merging, the
+        number of operations varies based on the data.
         \paragraph{Worst Case}
+          In the worst case, the input data is interleaved in such a way that
+          for each step of the merging process, both lists of elements are
+          traversed in full before the merge is complete.  This results in $n log(n)$ comparisons, and brings the total number of operations for the sort to $2n log(n)$, so the efficiency class is $O(n log(n))$.
         \paragraph{Best Case}
         \paragraph{Average Case}
         \paragraph{Code}
