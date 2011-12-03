@@ -1,5 +1,7 @@
-project.aux
-project.bbl
-project.blg
-project.log
-project.pdf
+*.aux
+*.bbl
+*.blg
+*.log
+*.fdb_latexmk
+*.pdf
+.*.swp
