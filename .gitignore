@@ -3,3 +3,5 @@
 *.blg
 *.log
 *.fdb_latexmk
+*.pdf
+.*.swp

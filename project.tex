@@ -35,14 +35,36 @@ Cullowhee, North Carolina\\
         von Neumann, it exploits the fact that combining two lists of sorted
         data is a linear-time process.  \cite{introalg}
       \subsubsection{Efficiency}
-        The actual code for the algorithm is available in \textbf{Listing
-        \ref{code:mergesort}}.  This particular implementation uses an
-        optimization that switches to insertion sort on small arrays.  This
-        speeds up the algorithm because it allows the small data set to fit
-        entirely in cache along with the small amount of code associated with
-        the insertion sort algorithm.  See \textbf{Listing
-        \ref{code:mergesort-parallel}} for a parallel implementation of merge
-        sort.
+        Merge sort's complexity is $n log(n)$ for all cases, but the number of
+        computations performed changes between best and worst cases.  In the
+        all cases, Merge Sort performs $log(n)$ splits of $n$ elements, putting
+        the efficiency of this phase at $n log(n)$.  However, when merging, the
+        number of operations varies based on the data.
+        \paragraph{Worst Case}
+          In the worst case, the input data is interleaved in such a way that
+          for each step of the merging process, both lists of elements are
+          traversed in full before the merge is complete.  This results in $n$
+          comparisons over $log(n)$ levels (complexity $n log(n)$, and brings
+          the total number of operations for the sort to $2n log(n)$, so the
+          efficiency class is $O(n log(n))$.
+        \paragraph{Best Case}
+          In the best case, the input data is already in order, allowing the
+          merge operations to traverse only the first list, ignoring the second.
+          This cuts the number of operations in half compared to the worst
+          case, so it performs $\frac{n}{2}$ comparisons on $log(n)$ levels,
+          which is $\frac{n log(n)}{2}$ operations for the merge phase and
+          $\frac{3n log(n)}{2}$ for the sort, giving us the complexity of
+          $\Omega(n log(n))$.  Supposedly, a variation of Merge Sort exists with
+          efficiency class $O(n)$ for already sorted data.
+        \paragraph{Code}
+          The actual code for the algorithm is available in \textbf{Listing
+          \ref{code:mergesort}}.  This particular implementation uses an
+          optimization that switches to insertion sort on small arrays.  This
+          speeds up the algorithm because it allows the small data set to fit
+          entirely in cache along with the small amount of code associated with
+          the insertion sort algorithm.  See \textbf{Listing
+          \ref{code:mergesort-parallel}} for a parallel implementation of merge
+          sort.
       \subsubsection{Applications}
         Merge sort is useful in applications where the data set will not fit
         entirely into memory.  This allows for the data to be read in from disk
