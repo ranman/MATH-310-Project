@@ -40,12 +40,12 @@ Cullowhee, North Carolina\\
           In the worst case, the input data is interleaved in such a way that
           for each step of the merging process, both lists of elements are
           traversed in full before the merge is complete.  This results in $n$
-          comparisons over $log(n)$ levels (compexity $n log(n)$, and brings
+          comparisons over $log(n)$ levels (complexity $n log(n)$, and brings
           the total number of operations for the sort to $2n log(n)$, so the
           efficiency class is $O(n log(n))$.
         \paragraph{Best Case}
           In the best case, the input data is already in order, allowing the
-          merge operations to traverse onl the first list, ignoring the second.
+          merge operations to traverse only the first list, ignoring the second.
           This cuts the number of operations in half compared to the worst
           case, so it performs $\frac{n}{2}$ comparisons on $log(n)$ levels,
           which is $\frac{n log(n)}{2}$ operations for the merge phase and
