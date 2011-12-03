@@ -12,6 +12,7 @@
 \title{Sorting Algorithms}
 \author{Joseph Randall Hunt\\
 Bobby Wertman\\
+Marco Anton\\
 Western Carolina University,\\
 Cullowhee, North Carolina\\
 }
@@ -46,9 +47,159 @@ Cullowhee, North Carolina\\
         In addition, when time complexity needs to be guaranteed, merge sort is
         preferable over quicksort, as quicksort's worst case is $O(n^2)$.
    \subsection{Quick Sort}
-      \subsubsection{Algorithm}
-      \subsubsection{Efficiency}
-      \subsubsection{Applications}
+      \subsubsection{Algorithm}Quicksort is a fast algorithm, developed
+by Tony Hoare, that has a 
+best and average running time of $O(nlog(n))$ and a worst-case  of
+$O(n^2)$.\\
+Quicksort first divides a large list into two smaller lists with respect
+to a ``pivot" (a pivot is a random item selected from the list). The 
+first list contains items that are smaller and the second list contains 
+items that are larger than the pivot. Finally, apply quicksort to the
+smaller and larger lists and return the ordered list. 
+According to Weiss\cite{weiss}  the basic algorithm to sort an array $S$ 
+consist of the following four steps:
+\begin{enumerate}
+\item If the number of elements in $S$ is $0$ or $1$, then return.
+\item Pick any element $v$ in $S$. This is called the \textbf{pivot}.
+\item \textbf{Partition} $S - \{v\}$ (the remaining elements in $S$)
+into two disjoint groups: $S_1 = \{x \in S - \{v\}|x\leq v\}$, and $S_2
+= \{x \in S - \{v\}|x \geq v\}$.
+\item Return $\{$quicksort$(S_1)$ followed by $v$ followed by
+quicksort$(S_2)\}$
+\end{enumerate}
+\subsubsection{Efficiency}
+Like mergesort, quicksort is recursive; therefore, its analysis requires
+solving a recurrence formula.\\
+\begin{itemize}
+\item\emph{Worst Case Analysis}\\
+To set the recurrence relation on this case, one assumes that the pivot
+that is chosen is always the smallest in the list. Therefore, there is 
+only going to be one list (the list containing the largest elements).
+The recurrence relation on the worst case is:
+$$T(1) = 1$$
+$$T(n) = T(n-1) + Cn\mbox{, } n > 1$$
+Where $T(n-1)$ are the recursions and $c*n$ is the linear time spent in
+the partition (selecting a pivot); moreover, in the base case, we just
+sort $0$ or $1$ item, we can do this in constant time. To solve this
+recursion, 
+the method of Backward substitution is used:\\
+$$\begin{array}{lclcl}
+ &  & &  & substitute: T(n - 1) = T(n - 2) + C(n - 1)\\
+T(n - 2) + C(n - 1) + Cn & & &;& substitute: T(n - 2) = T(n - 3) + C(n -
+2)\\
+T(n - 3)) + C(n - 2) + C(n - 1) + Cn & & &;& substitute: T(n - 3) = T(n
+- 4) \\
+\vdots & & & & \\
+\end{array}$$
+$=> T(n - (n - 1)) = C(n - n) + C(n-(n - 1)) + ... + Cn$\\
+$= \displaystyle\sum_{i = 2}^{n}Ci = C\left(\frac{n(n + 1)}{2}\right)$
+Therefore, in this case quicksort is of $O(n^2)$\\
+
+\item\emph{Best Case Analysis}\\
+For the best case analysis we have to choose the pivot such that it is
+always in the middle. Therefore our new recurrence relation is:
+$$T(n) = 2T(n/2) + Cn$$
+$$T(1) = 1$$
+Note that the recursion went from $T(n - 1)$ to $T(n/2)$. This is
+because
+of the selection of the pivot; the pivot has been selected such that the
+list is divided into two equal and smaller lists. These smaller lists
+are
+performed recursively (this is the reason for the $2$ in front of the
+recurence relation) until $T(1)$ where we only return the element.\\
+This recurrence relation could be solved using the ``Master
+Theorem"\cite{levitin}.\\
+$$a = 2; b = 2; d = 1$$
+$$\mbox{CASE II: } a = b^d  =>  2 = 2^1$$
+Therefore the efficiency class in this case is: $\Theta(n^dlogn) =
+\Theta(nlogn)$\\
+
+%\item\emph{Average Case Analysis}\\
+\end{itemize}
+As analysed before, the pivot can be chosen in many ways; however, this 
+might make the quicksort algorithm to perform poorly. As stated in the 
+\emph{Best Case Analysis}, in order for quicksort to perform better, 
+one has to select a pivot to be in the center of the array, but this 
+might be an issue when we have a list of odd elements. 
+An efficient way of choosing the pivot is choosing the element of 
+intermediate value between three elements in the list, more
+specifically, 
+the three elements chosen from
+the list have to be the first, last and middle possition (middle
+element would be $\lceil N/2 \rceil$ where $N =$ number of elements in a 
+list). After selecting them, they need to be sorted and the pivot
+selected 
+would be the middle element. This method is called \emph{Median-of-Three
+partitioning}. Not only this method will help choose a good pivot, but
+also, will help reduce the number of elements to check. The elments in
+the
+first and last position are in the correct side of their corresponding
+lists; therefore, they don't have to be checked when performing
+quicksort.\\
+\begin{itemize}
+\item QuickSort Example.\\
+The following list is Sorted using the quicksort algorithm:\\
+$$S = 3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5$$
+
+\begin{itemize}
+\item Find "Pivot''\\
+Left index = $0$; right index = $10$; center = $5$\\
+Sort left, right and center (compare the elements of these indexes and
+put the largest on the right index, and the smallest on the left
+index).\\
+The pivot is the element in position ``center". For the next step, one
+needs to put the pivot on position $(n - 1)$ of the array ($n$ is the
+size of the array). This yields the following array $3 1 4 1 5 3 2 6
+5 4 5 (5) 9$. The item between parentheses is the pivot.\\
+\item Partition array into two groups:
+Set i to $1$ and j to $n - 2$ (note that left and  right items are on
+the
+correct side of the array).\\
+Transverse through the array until i is greater or equal to the pivot
+and j
+is smaller or equal to the pivot; in this case until $i = 4$ and
+$j = 8$, and swap the items in i and j. This produces the following
+array:
+$3 1 4 1 5 4 2 6 5 (5) 9$\\
+On the next iteration i and j have crossed. No swap is performed;
+however, we need to restore the pivot to its correct position (i).\\
+Pivot in correct position: $3 1 4 1 5 3 2 (5) 5 6 9$\\
+After this step, it is known that the pivot is sorted (smaller elements
+are on left of pivot and bigger elements are on right of pivot).\\
+\item Quicksort the remaining two groups \\
+We now proceed to sort elements to the left of the pivot (smaller
+elements) and elements to the right of the pivot (bigger
+elements).\\
+\end{itemize}
+
+\centering\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+$3$ & $1$ & $4$ & $1$ & $5$ & $3$ & $2$ & $(5)$ & $5$ & $6$ & $9$\\
+\hline
+$3$ & $1$ & $4$ & $(1)$ & $5$ & $3$ & $2$ & $|5|$ & $5$ & $6$ &
+$9$\\ \hline
+$1$ & $1$ & $4$ & $(3)$ & $5$ & $3$ & $2$ & $|5|$ & $5$ & $6$ &
+$9$\\ \hline
+$1$ & $1$ & $4$ & $(2)$ & $5$ & $3$ & $3$ & $|5|$ & $5$ & $6$ &
+$9$\\ \hline
+$1$ & $1$ & $4$ & $3$ & $5$ & $(2)$ & $3$ & $|5|$ & $5$ & $6$ &
+$9$\\ \hline
+$1$ & $1$ & $|2|$ & $3$ & $5$ & $4$ & $3$ & $|5|$ & $5$ & $6$ &
+$9$\\ \hline
+$|1|$ & $|1|$ & $|2|$ & $3$ & $5$ & $4$ & $3$ & $|5|$ & $5$ & $6$ &
+$9$\\ \hline
+$|1|$ & $|1|$ & $|2|$ & $3$ & $(5)$ & $4$ & $3$ & $|5|$ & $5$ & $6$
+& $9$\\ \hline
+$|1|$ & $|1|$ & $|2|$ & $3$ & $(3)$ & $4$ & $5$ & $|5|$ & $5$ & $6$
+& $9$\\ \hline
+$|1|$ & $|1|$ & $|2|$ & $3$ & $4$ & $(3)$ & $5$ & $|5|$ & $5$ & $6$
+& $9$\\ \hline
+$|1|$ & $|1|$ & $|2|$ & $|3|$ & $|3|$ & $|4|$ & $|5|$ & $|5|$ &
+$|5|$ &
+$|6|$ & $|9|$\\ \hline
+\end{tabular}
+\end{itemize}
+\subsubsection{Applications}
    \subsection{Shell Sort}
       \subsubsection{Algorithm}
       \subsubsection{Efficiency}
