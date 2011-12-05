@@ -47,6 +47,25 @@ Cullowhee, North Carolina\\
           comparisons over $log(n)$ levels (complexity $n log(n)$, and brings
           the total number of operations for the sort to $2n log(n)$, so the
           efficiency class is $O(n log(n))$.
+          $$\begin{array}{rrl} Base\ case: & T(1) & = 0 \\
+
+          Recurrence: & T(n) & = 2 T(\frac{n}{2}) + n \\
+
+          Divide\ both\ sides\ by\ n: & \frac{T(n)}{n} & = \frac{2
+              T(\frac{n}{2}) + n}{n} \\
+
+          Simplify: & \frac{T(n)}{n} & = \frac{T(\frac{n}{2})}{\frac{n}{2}} + 1 \\
+
+          Telescope: & & = \frac{T(\frac{n}{4})}{\frac{n}{4}} + 1 + 1 \\
+
+          & \vdots & \\
+
+          & & = \frac{T(\frac{n}{n})}{\frac{n}{n}} + 1 + 1 + \dots + 1 \\ &
+              \frac{T(n)}{n} & = log_2 n \\
+
+          Solve: & T(n) & = n log_2 n \\
+          \end{array}$$
+
         \paragraph{Best Case}
           In the best case, the input data is already in order, allowing the
           merge operations to traverse only the first list, ignoring the second.
@@ -54,7 +73,9 @@ Cullowhee, North Carolina\\
           case, so it performs $\frac{n}{2}$ comparisons on $log(n)$ levels,
           which is $\frac{n log(n)}{2}$ operations for the merge phase and
           $\frac{3n log(n)}{2}$ for the sort, giving us the complexity of
-          $\Omega(n log(n))$.
+          $\Omega(n log(n))$.  The proof of the efficiency is the same as
+          above, replacing the $ + n$ in the recurrence relation with $ +
+          \frac{n}{2}$.
         \paragraph{Code}
           The actual code for the algorithm is available in \textbf{Listing
           \ref{code:mergesort}}.  This particular implementation uses an
