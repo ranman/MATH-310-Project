@@ -250,7 +250,79 @@ $|6|$ & $|9|$\\ \hline
         \begin{center}
             \begin{tabular}{ | c | c | c | c | c | c | c | c | c | c | }
                 \hline 
-                $3$ & $8$ & $6$ & $2$ & $-5$ & $
+                \multicolumn{10}{|c|}{Initial Set} \\
+                \hline
+                $3$ & $8$ & $6$ & $2$ & $-5$ & $9$ & $1$ & $4$ & $7$ & $5$ \\ 
+                \hline
+                \multicolumn{10}{|c|}
+                            {$gap = \lfloor set.length\rfloor / 2 = 5$} \\
+                \hline
+                $|-5|$ & $8$ & $6$ & $2$ & $3$ & $9$ & $1$ & $4$ & $7$ & $5$ \\
+                \hline
+                $|-5|$ & $8$ & $6$ & $2$ & $3$ & $9$ & $1$ & $4$ & $7$ & $5$ \\
+                \hline
+                $|-5|$ & $8$ & $1$ & $2$ & $3$ & $9$ & $6$ & $4$ & $7$ & $5$ \\
+                \hline
+                $|-5|$ & $8$ & $1$ & $2$ & $3$ & $9$ & $6$ & $4$ & $7$ & $5$ \\
+                \hline
+                $|-5|$ & $8$ & $1$ & $2$ & $3$ & $9$ & $6$ & $4$ & $7$ & $5$ \\
+                \hline
+                $|-5|$ & $8$ & $1$ & $2$ & $3$ & $5$ & $6$ & $4$ & $7$ & $9$ \\
+                \hline
+                \multicolumn{10}{|c|}{$gap = \lfloor gap / 2\rfloor = 2$} \\
+                \hline
+                $|-5|$ & $8$ & $1$ & $2$ & $3$ & $5$ & $6$ & $4$ & $7$ & $9$ \\
+                \hline
+                $|-5|$ & $2$ & $1$ & $8$ & $3$ & $5$ & $6$ & $4$ & $7$ & $9$ \\
+                \hline
+                $|-5|$ & $2$ & $1$ & $8$ & $3$ & $5$ & $6$ & $4$ & $7$ & $9$ \\
+                \hline
+                $|-5|$ & $2$ & $1$ & $5$ & $3$ & $8$ & $6$ & $4$ & $7$ & $9$ \\
+                \hline
+                $|-5|$ & $2$ & $1$ & $5$ & $3$ & $8$ & $6$ & $4$ & $7$ & $9$ \\
+                \hline
+                $|-5|$ & $2$ & $1$ & $5$ & $3$ & $4$ & $6$ & $8$ & $7$ & $9$ \\
+                \hline
+                $|-5|$ & $2$ & $1$ & $4$ & $3$ & $5$ & $6$ & $8$ & $7$ & $9$ \\
+                \hline
+                $|-5|$ & $2$ & $1$ & $4$ & $3$ & $5$ & $6$ & $8$ & $7$ & $9$ \\
+                \hline
+                \multicolumn{10}{|c|}{$gap = \lfloor gap / 2\rfloor = 1$} \\
+                \multicolumn{10}{|c|}{Insertion Sort} \\
+                \hline
+                $|-5|$ & $2$ & $1$ & $4$ & $3$ & $5$ & $6$ & $8$ & $7$ & $9$ \\
+                \hline
+                $|-5|$ & $|1|$ & $2$ & $4$ & $3$ & $5$ & $6$ & $8$ & $7$ & $9$
+                \\
+                \hline
+                $|-5|$ & $|1|$ & $|2|$ & $4$ & $3$ & $5$ & $6$ & $8$ & $7$ &
+                $9$ \\
+                \hline
+                $|-5|$ & $|1|$ & $|2|$ & $|3|$ & $4$ & $5$ & $6$ & $8$ & $7$ &
+                $9$ \\
+                \hline
+                $|-5|$ & $|1|$ & $|2|$ & $|3|$ & $|4|$ & $5$ & $6$ & $8$ & $7$
+                & $9$ \\
+                \hline
+                $|-5|$ & $|1|$ & $|2|$ & $|3|$ & $|4|$ & $|5|$ & $6$ & $8$ &
+                $7$ & $9$ \\
+                \hline
+                $|-5|$ & $|1|$ & $|2|$ & $|3|$ & $|4|$ & $|5|$ & $|6|$ & $8$ &
+                $7$ & $9$ \\
+                \hline
+                $|-5|$ & $|1|$ & $|2|$ & $|3|$ & $|4|$ & $|5|$ & $|6|$ & $|7|$
+                & $8$ & $9$ \\
+                \hline
+                $|-5|$ & $|1|$ & $|2|$ & $|3|$ & $|4|$ & $|5|$ & $|6|$ & $|7|$
+                & $|8|$ & $9$ \\
+                \hline
+                $|-5|$ & $|1|$ & $|2|$ & $|3|$ & $|4|$ & $|5|$ & $|6|$ & $|7|$
+                & $|8|$ & $|9|$ \\
+                \hline
+
+
+                          \end{tabular}
+        \end{center}
     \subsubsection{Efficiency}
         The Shell Sort can sort an array of elements faster than the insertion
         sort by comparing elements across a gap as opposed to only comparing
@@ -268,11 +340,12 @@ $|6|$ & $|9|$\\ \hline
         $\Theta (N/2^k)$. Vaughan Pratt, who developed \textquotedblleft
         Pratt's theorem \textquotedblright for tree spanning developed his own
         gap sequence beginning with $h= \{ 1, 3, 7, 15, 31, 63, 127, 255, 511
-        \}$. Pratt's gap sequence has a running time of $\Theta (N^{3/2})$.
+        \}$. Pratt's gap sequence has a worst case time of $\Theta (N^{3/2})$.
         Several others have their own gap sequence and experts in the
         mathematical field continue to look for the fastest gap
         sequence\cite{princton}.\\
     \subsubsection{Applications}
+        
         
         
    \subsection{Comparing and Contrasting}
