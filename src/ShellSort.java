@@ -9,7 +9,7 @@
  * @version 30.11.11
  */
 
-public class ShellSortV2 {
+public class ShellSort {
 
     /**
      * ArrayList of ints that contains the numbers in their original order.
