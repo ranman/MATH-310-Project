@@ -14,21 +14,21 @@ public class QuickSort {
 
             if (a[center] < (a[left])) {
                 System.out.print("a[center] (" + a[center] + ") < a[left] (" 
-                                                                        + a[left] + ")");
+                                                               + a[left] + ")");
                 System.out.print("\nSwaping left with center...");
                 swapReferences(a, left, center);
                 System.out.print("\nArray: "); printArray(a);
             }
             if (a[right] < (a[left])) {
                 System.out.print("a[right] (" + a[right] + ") < a[left] (" 
-                                                                        + a[left] + ")");
+                                                               + a[left] + ")");
                 System.out.print("\nSwaping left with right...");
                 swapReferences(a, left, right);
                 System.out.print("\nArray: "); printArray(a);
             }
             if (a[right] < (a[center])) {
                 System.out.print("a[right] (" + a[right] + ") < a[center] (" 
-                                                                        + a[center] + ")");
+                                                             + a[center] + ")");
                 System.out.print("\nSwaping center with right...");
                 swapReferences(a, center, right);
                 System.out.print("\nArray: "); printArray(a);
