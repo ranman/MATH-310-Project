@@ -1,13 +1,13 @@
 public class QuickSort {
     public static final int CUTOFF = 3;
     public static void main(String[] args) {
-        int[] array = {3,1,4,1,5,9,2,6,5,3,5};
+        int[] array = {10,0,3,1,4,7,9,6,8,5,2};
         quicksort(array, 0, (array.length -1));
         printArray(array);
     }
 
     public static int median3(int[] a, int left, int right) {
-        System.out.println("\n ---------Median---------!!!");
+        System.out.println("\n ---------Median------------");
         int center = (left + right) / 2;
         System.out.println("Center index : " + center);
         System.out.print("Array: "); printArray(a);
@@ -41,8 +41,10 @@ public class QuickSort {
     }
 
     private static void quicksort(int[] a, int left, int right) {
-	
-        System.out.println("left + CUTOFF <= right");
+
+		System.out.println("------------Quicksort----------------");
+        printArray(a);
+		System.out.println("left + CUTOFF <= right");
         System.out.println(left + CUTOFF + "<=" + right);
         if (left + CUTOFF <= right) {
 		
@@ -51,9 +53,7 @@ public class QuickSort {
             System.out.print("Array: "); printArray(a);
             System.out.println("Pivot = " + pivot);
 		
-            System.out.println("i = " + left);
             int i = left;
-            System.out.println("j = " + (right - 1));
             int j = right - 1;
             for(;;) {
                 while(pivot > a[++i]);
@@ -72,15 +72,15 @@ public class QuickSort {
         swapReferences(a, i, right - 1); //restore pivot
         System.out.print("Array: "); printArray(a);
 
-        System.out.println("Sort Smaller elements: ");
+       
         quicksort(a, left, i - 1); //sort small elements
 		
-        System.out.println("Sort Bigger elements: ");
         quicksort(a, i + 1, right); // sort large elements
 
         } else { // do an insertion sort on the subarray
-            System.out.println();
-            //insertionSort(a);
+            System.out.println("Small Array...");
+            insertionSort(a);
+			printArray(a);
         }
     }
 
