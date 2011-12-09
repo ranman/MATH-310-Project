@@ -25,7 +25,7 @@ public class ShellSort {
      */
     public static void main(String[] args) {
 
-        ShellSortV2 sorter = new ShellSortV2(args);
+        ShellSort sorter = new ShellSort(args);
         sorter.sort();
 
     }

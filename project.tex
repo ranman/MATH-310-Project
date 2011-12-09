@@ -24,6 +24,7 @@ Cullowhee, North Carolina\\
 \begin{document}
 \maketitle
 \section{Project Proposal}
+%TODO
    \subsection{Goals}
    \subsection{Plan}
 \section{Sorts}
@@ -256,8 +257,9 @@ $|6|$ & $|9|$\\ \hline
         several pros and cons\cite{introalg}. Mainly, Shell Sort is the
         fastest $N^2$ based sort,however, its computational complexity can be
         difficult to calculate\cite{princton}. Shell Sort is reasonably easy to
-        implement and also easy to comprehend. 
-        Donald Shell's sorting algorithm can be relativly easy to visualize.
+        implement and also easy to comprehend as seen in \textbf{Listing
+        \ref{code:shellsort}}. Donald Shell's sorting algorithm can be
+        relativly easy to visualize.
         \begin{enumerate}
             \item Take the first element, $h_0$.
             \item Compare it to the $h_{k_{th}}$ element. For example, if the 
@@ -363,7 +365,9 @@ $|6|$ & $|9|$\\ \hline
         \}$. Pratt's gap sequence has a worst case time of $\Theta (N^{3/2})$.
         Several others have their own gap sequence and experts in the
         mathematical field continue to look for the fastest gap
-        sequence\cite{princton}.\\
+        sequence\cite{princton}. The best case for Shell Sort is $N^2$ when the
+        set is already sorted and the gap is 1, the sort is a completed 
+        insertion sort.\\
     \subsubsection{Applications}
         Shell's sort is not seen often in todays time. Some implemetations 
         exists within the C standard library including the \textquotedblleft 
@@ -374,6 +378,7 @@ $|6|$ & $|9|$\\ \hline
         Quick Sort.\\
         
    \subsection{Comparing and Contrasting}
+   %TODO
 \section{Conclusions}
 
 \begin{appendices}
@@ -390,13 +395,14 @@ $|6|$ & $|9|$\\ \hline
     identifierstyle=\ttfamily,
     tabsize=2
 }
+\lstinputlisting[caption={Parallel implementation of Merge Sort in Go},label=code:mergesort-parallel]{src/parallel.go}
 \lstinputlisting[caption={Go implementation of MergeSort},label=code:mergesort]{src/merge.go}
-\lstinputlisting[caption={Parallel implementation of MergeSort in Go},label=code:mergesort-parallel]{src/parallel.go}
 
 \lstset{
     language=Java
 }
-\verbatiminput{src/Quicksort.java}
+\lstinputlisting[caption={Java implementation of Shell Sort in Java},label=code:shellsort]{src/ShellSort.java}
+\lstinputlisting[caption={Java implementation of Quick Sort in Java},label=code:quicksort]{src/QuickSort.java}
 \end{appendices}
 
 \bibliography{sources}
