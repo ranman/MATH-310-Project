@@ -25,21 +25,28 @@ Cullowhee, North Carolina\\
 \maketitle
 \section{Project Proposal}
    \subsection{Goals}
+    The goal for this project is to create a simple and straightforward
+implementation of several sorts and proceed to analyze those sorts to better
+understand BigOh, sorting, and algorithmic complexity. The main goal of this
+project is to learn more about BigOh's formal definition and how an
+algorithm's efficiency is determined. Ancillary goals
    \subsection{Plan}
+    More specifically, we will proceed by implementing Merge Sort, Quick Sort,
+    and Shell Sort and then analyzing the efficiency of each sort. A worst-case, 
+    best-case, and average-case analysis would be optimal but it might not be
+    time-efficient.
 \section{Sorts}
    \subsection{Merge Sort}
       \subsubsection{Algorithm}
         Merge sort is a comparison-based sorting algorithm, based on the
-        divide-and-conquer design.  Its average and worst cases are both $n
-        log(n)$, and its best case is $\Omega(n)$.  Invented in 1945 by John
-        von Neumann, it exploits the fact that combining two lists of sorted
-        data is a linear-time process.  \cite{introalg}
-      \subsubsection{Efficiency}
-        Merge sort's complexity is $n log(n)$ for all cases, but the number of
-        computations performed changes between best and worst cases.  In the
-        all cases, Merge Sort performs $log(n)$ splits of $n$ elements, putting
-        the efficiency of this phase at $n log(n)$.  However, when merging, the
-        number of operations varies based on the data.
+divide-and-conquer design. Its average and worst cases are both $n log(n)$,
+and its best case is $\Omega(n)$. Invented in 1945 by John von Neumann, it
+exploits the fact that combining two lists of sorted data is a linear-time
+process. \cite{introalg} \subsubsection{Efficiency} Merge sort's complexity is
+$n log(n)$ for all cases, but the number of computations performed changes
+between best and worst cases. In the all cases, Merge Sort performs $log(n)$
+splits of $n$ elements, putting the efficiency of this phase at $n log(n)$.
+However, when merging, the number of operations varies based on the data.
         \paragraph{Worst Case}
           In the worst case, the input data is interleaved in such a way that
           for each step of the merging process, both lists of elements are
@@ -91,16 +98,16 @@ Cullowhee, North Carolina\\
         entirely into memory.  This allows for the data to be read in from disk
         and sorted as it is read, thus requiring a very small memory footprint.
         In addition, when time complexity needs to be guaranteed, merge sort is
-        preferable over quicksort, as quicksort's worst case is $O(n^2)$.
+        preferable over quick sort, as quick sort's worst case is $O(n^2)$.
    \subsection{Quick Sort}
-      \subsubsection{Algorithm}Quicksort is a fast algorithm, developed
+      \subsubsection{Algorithm}Quick sort is a fast algorithm, developed
 by Tony Hoare, that has a 
 best and average running time of $O(nlog(n))$ and a worst-case  of
 $O(n^2)$.\\
-Quicksort first divides a large list into two smaller lists with respect
+Quick sort first divides a large list into two smaller lists with respect
 to a ``pivot" (a pivot is a random item selected from the list). The 
 first list contains items that are smaller and the second list contains 
-items that are larger than the pivot. Finally, apply quicksort to the
+items that are larger than the pivot. Finally, apply quick sort to the
 smaller and larger lists and return the ordered list. 
 According to Weiss\cite{weiss}  the basic algorithm to sort an array $S$ 
 consist of the following four steps:
@@ -110,11 +117,11 @@ consist of the following four steps:
 \item \textbf{Partition} $S - \{v\}$ (the remaining elements in $S$)
 into two disjoint groups: $S_1 = \{x \in S - \{v\}|x\leq v\}$, and $S_2
 = \{x \in S - \{v\}|x \geq v\}$.
-\item Return $\{$quicksort$(S_1)$ followed by $v$ followed by
-quicksort$(S_2)\}$
+\item Return $\{$quick sort$(S_1)$ followed by $v$ followed by
+quick sort$(S_2)\}$
 \end{enumerate}
 \subsubsection{Efficiency}
-Like mergesort, quicksort is recursive; therefore, its analysis requires
+Like merge sort, quick sort is recursive; therefore, its analysis requires
 solving a recurrence formula.\\
 \begin{itemize}
 \item\emph{Worst Case Analysis}\\
@@ -139,7 +146,7 @@ T(n - 3)) + C(n - 2) + C(n - 1) + Cn & & &;& substitute: T(n - 3) = T(n
 \end{array}$$
 $=> T(n - (n - 1)) = C(n - n) + C(n-(n - 1)) + ... + Cn$\\
 $= \displaystyle\sum_{i = 2}^{n}Ci = C\left(\frac{n(n + 1)}{2}\right)$
-Therefore, in this case quicksort is of $O(n^2)$\\
+Therefore, in this case quick sort is of $O(n^2)$\\
 
 \item\emph{Best Case Analysis}\\
 For the best case analysis we have to choose the pivot such that it is
@@ -152,7 +159,7 @@ of the selection of the pivot; the pivot has been selected such that the
 list is divided into two equal and smaller lists. These smaller lists
 are
 performed recursively (this is the reason for the $2$ in front of the
-recurence relation) until $T(1)$ where we only return the element.\\
+recurrence relation) until $T(1)$ where we only return the element.\\
 This recurrence relation could be solved using the ``Master
 Theorem"\cite{levitin}.\\
 $$a = 2; b = 2; d = 1$$
@@ -162,29 +169,29 @@ Therefore the efficiency class in this case is: $\Theta(n^dlogn) =
 
 %\item\emph{Average Case Analysis}\\
 \end{itemize}
-As analysed before, the pivot can be chosen in many ways; however, this 
-might make the quicksort algorithm to perform poorly. As stated in the 
-\emph{Best Case Analysis}, in order for quicksort to perform better, 
+As analyzed before, the pivot can be chosen in many ways; however, this 
+might make the quick sort algorithm to perform poorly. As stated in the 
+\emph{Best Case Analysis}, in order for quick sort to perform better, 
 one has to select a pivot to be in the center of the array, but this 
 might be an issue when we have a list of odd elements. 
 An efficient way of choosing the pivot is choosing the element of 
 intermediate value between three elements in the list, more
 specifically, 
 the three elements chosen from
-the list have to be the first, last and middle possition (middle
+the list have to be the first, last and middle position (middle
 element would be $\lceil N/2 \rceil$ where $N =$ number of elements in a 
 list). After selecting them, they need to be sorted and the pivot
 selected 
 would be the middle element. This method is called \emph{Median-of-Three
 partitioning}. Not only this method will help choose a good pivot, but
-also, will help reduce the number of elements to check. The elments in
+also, will help reduce the number of elements to check. The elements in
 the
 first and last position are in the correct side of their corresponding
 lists; therefore, they don't have to be checked when performing
 quicksort.\\
 \begin{itemize}
 \item QuickSort Example.\\
-The following list is Sorted using the quicksort algorithm:\\
+The following list is Sorted using the quick sort algorithm:\\
 $$S = 3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5$$
 
 \begin{itemize}
@@ -248,16 +255,17 @@ $|6|$ & $|9|$\\ \hline
 \subsubsection{Applications}
    \subsection{Shell Sort}
    \subsubsection{Algorithm}
-        The Shell Sort was developed by Donald Shell in 1959. Formally caled
+        The Shell Sort was developed by Donald Shell in 1959. Formally called
         Shell's Sort, the algorithm was the first sorting method to break the 
-        quadratic time, however this was not proven unitil years later. The 
+        quadratic time, however this was not proven until years later. The 
         Shell Sort is made faster my comparing elements at a distance rather 
-        than onl comparing elements side by side. This sorting method has
+        than only comparing elements side by side. This sorting method has
         several pros and cons\cite{introalg}. Mainly, Shell Sort is the
         fastest $N^2$ based sort,however, its computational complexity can be
         difficult to calculate\cite{princton}. Shell Sort is reasonably easy to
-        implement and also easy to comprehend. 
-        Donald Shell's sorting algorithm can be relativly easy to visualize.
+        implement and also easy to comprehend. It is however difficult to
+        analyze due to the changing gap sizes.
+        Donald Shell's sorting algorithm can be relatively easy to visualize.
         \begin{enumerate}
             \item Take the first element, $h_0$.
             \item Compare it to the $h_{k_{th}}$ element. For example, if the 
@@ -352,7 +360,7 @@ $|6|$ & $|9|$\\ \hline
         Shell Sort is known as the \textquotedblleft diminishing increment sort
         \textquotedblright \cite{education}. This gap is also the reason that
         the computational complexity is difficult to find, it varies based on
-        the gap. Several mathmeticians have attempted to find the best
+        the gap. Several mathematicians have attempted to find the best
         \textquotedblleft gap sequence \textquotedblright. With the discovery
         of the algorithm, Donald Shell used to floor function of $gap / 2$.
         This is also the gap sequence used in the implementation for this
@@ -367,14 +375,20 @@ $|6|$ & $|9|$\\ \hline
     \subsubsection{Applications}
         Shell's sort is not seen often in todays time. Some implemetations 
         exists within the C standard library including the \textquotedblleft 
-        uClibc\textquotedblright which supports Linux in embeded systems
+        uClibc\textquotedblright which supports Linux in embedded systems
         \cite{uClibc}. The Shell Sort also exists with the Linux kernel itself
         \cite{kernel}. Shell's Sort is not used do to is slower speed and 
-        greater number of computations over other sorting algorithims such as 
+        greater number of computations over other sorting algorithms such as 
         Quick Sort.\\
-        
-   \subsection{Comparing and Contrasting}
 \section{Conclusions}
+Through this project we have learned quite a lot about efficiency analysis and
+sorting methodologies. It is interesting to note that while Quick sort has the
+worst worst-case efficiency it is empirically the fastest of the listed sorts.
+This leads one to believe that BigOh notation is not the only concern when
+attempting to design an algorithm. Another thoughtful note gleaned from this
+is that not all algorithms immediately lend themselves to a simple analysis.
+Shell sort for instance is hard to express purely in mathematics and therefor
+hard to analyze.
 
 \begin{appendices}
 \section{Code Examples}
@@ -395,8 +409,9 @@ $|6|$ & $|9|$\\ \hline
 
 \lstset{
     language=Java
+    label=code:quicsort
 }
-\verbatiminput{src/Quicksort.java}
+\lstinputlisting{Quicksort Implementation}{src/Quicksort.java}
 \end{appendices}
 
 \bibliography{sources}
